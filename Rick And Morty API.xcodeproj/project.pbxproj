@@ -15,6 +15,8 @@
 		43C47FA421E617E600ACD64E /* NavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FA321E617E600ACD64E /* NavController.swift */; };
 		43C47FA621E624DF00ACD64E /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FA521E624DF00ACD64E /* APIHelper.swift */; };
 		43C47FA821E62E7800ACD64E /* APIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FA721E62E7800ACD64E /* APIResult.swift */; };
+		43C47FAA21E6457900ACD64E /* PersoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FA921E6457900ACD64E /* PersoCell.swift */; };
+		43C47FAC21E6466200ACD64E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FAB21E6466200ACD64E /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		43C47FA321E617E600ACD64E /* NavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavController.swift; sourceTree = "<group>"; };
 		43C47FA521E624DF00ACD64E /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		43C47FA721E62E7800ACD64E /* APIResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResult.swift; sourceTree = "<group>"; };
+		43C47FA921E6457900ACD64E /* PersoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersoCell.swift; sourceTree = "<group>"; };
+		43C47FAB21E6466200ACD64E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +90,7 @@
 			children = (
 				43C47FA521E624DF00ACD64E /* APIHelper.swift */,
 				43C47FA721E62E7800ACD64E /* APIResult.swift */,
+				43C47FAB21E6466200ACD64E /* Extensions.swift */,
 			);
 			path = Modele;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 		43C47FA221E617B500ACD64E /* Vue */ = {
 			isa = PBXGroup;
 			children = (
+				43C47FA921E6457900ACD64E /* PersoCell.swift */,
 			);
 			path = Vue;
 			sourceTree = "<group>";
@@ -173,6 +179,8 @@
 				43C47F9121E615FF00ACD64E /* CharactersController.swift in Sources */,
 				43C47F8F21E615FF00ACD64E /* AppDelegate.swift in Sources */,
 				43C47FA421E617E600ACD64E /* NavController.swift in Sources */,
+				43C47FAA21E6457900ACD64E /* PersoCell.swift in Sources */,
+				43C47FAC21E6466200ACD64E /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
