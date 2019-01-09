@@ -33,6 +33,7 @@ class CharactersController: UIViewController {
     }
     
     func animateIn(personnage : Personnage){
+        detailView.setup(personnage)
         collectionView.alpha = 0
         detailView.alpha = 1
     }
