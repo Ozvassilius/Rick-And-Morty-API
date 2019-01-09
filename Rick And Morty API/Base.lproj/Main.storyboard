@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6a-b2-UwA" customClass="DetailView" customModule="Rick_And_Morty_API" customModuleProvider="target">
+                                <rect key="frame" x="20" y="84" width="335" height="563"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s74-V6-l3P">
                                 <rect key="frame" x="10" y="74" width="355" height="593"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -81,8 +85,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W6a-b2-UwA" secondAttribute="bottom" constant="20" id="0ed-VN-NVc"/>
+                            <constraint firstItem="W6a-b2-UwA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8Yq-hv-yZ1"/>
+                            <constraint firstItem="W6a-b2-UwA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="8c3-zK-Lyc"/>
                             <constraint firstItem="s74-V6-l3P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Cgl-HK-iWR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s74-V6-l3P" secondAttribute="trailing" constant="10" id="J7b-MX-ovV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W6a-b2-UwA" secondAttribute="trailing" constant="20" id="p5U-7A-aDa"/>
                             <constraint firstAttribute="bottom" secondItem="s74-V6-l3P" secondAttribute="bottom" id="v6t-2R-vVy"/>
                             <constraint firstItem="s74-V6-l3P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="w34-5i-PBH"/>
                         </constraints>
