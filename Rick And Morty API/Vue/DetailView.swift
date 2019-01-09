@@ -11,7 +11,20 @@ import UIKit
 class DetailView: UIView {
     
     var view : UIView?
-
+    
+    @IBOutlet weak var nameLbl: UILabel!
+    
+    @IBOutlet weak var persoIV: UIImageView!
+    
+    @IBOutlet weak var statusLbl: UILabel!
+    
+    @IBOutlet weak var genderLbl: UILabel!
+    
+    @IBOutlet weak var specieLbl: UILabel!
+    
+    @IBOutlet weak var originLbl: UILabel!
+    
+    @IBOutlet weak var locationLbl: UILabel!
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadXib()
@@ -39,4 +52,10 @@ class DetailView: UIView {
         }
     }
 
+    @IBAction func closeAction(_ sender: UIButton) {
+        
+        // on post une notif pour dire qu'on ferme la page Detail
+        NotificationCenter.default.post(name: Notification.Name("close"), object: nil)
+        
+    }
 }

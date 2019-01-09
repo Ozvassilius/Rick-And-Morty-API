@@ -13,6 +13,9 @@ class CharactersController: UIViewController {
     var pageSuivante = ""
     var personnages: [Personnage] = []
     
+    
+    @IBOutlet weak var detailView: DetailView!
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
 
@@ -25,6 +28,18 @@ class CharactersController: UIViewController {
         
         // GET sur les personnages
         getPersos(string: APIHelper().urlPersonnages)
+        detailView.alpha = 0 // caché des le debut
+        NotificationCenter.default.addObserver(self, selector: #selector(animateOut), name: Notification.Name("close"), object: nil)
+    }
+    
+    func animateIn(personnage : Personnage){
+        collectionView.alpha = 0
+        detailView.alpha = 1
+    }
+    
+    @objc func animateOut(){
+        collectionView.alpha = 1
+        detailView.alpha = 0
     }
 
     func getPersos(string : String) {
@@ -93,5 +108,11 @@ extension CharactersController: UICollectionViewDelegate, UICollectionViewDataSo
             }
             
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let personnage = personnages[indexPath.item]
+        animateIn(personnage: personnage)
+        
     }
 }
