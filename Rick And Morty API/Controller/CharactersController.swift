@@ -24,11 +24,11 @@ class CharactersController: UIViewController {
         collectionView.dataSource = self
         
         // GET sur les personnages
-        getPersos()
+        getPersos(string: APIHelper().urlPersonnages)
     }
 
-    func getPersos() {
-        APIHelper().getPersos(APIHelper().urlPersonnages) { (pageSuivante, listePersos, erreurString) in
+    func getPersos(string : String) {
+        APIHelper().getPersos(string) { (pageSuivante, listePersos, erreurString) in
             if pageSuivante != nil {
                 print(pageSuivante!)
                 self.pageSuivante = pageSuivante!
@@ -79,4 +79,19 @@ extension CharactersController: UICollectionViewDelegate, UICollectionViewDataSo
         return CGSize(width: taille, height: taille)
     }
     
+    
+    // pour determiner si on est en bas de notre page (pour afficher la suite)
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item  == personnages.count - 1 {
+            // si on est au dernier personnage
+            // on va telecharger
+            
+            // on verifie dabord si la pageSuivante existe
+             print("Telecharger")
+            if pageSuivante != "" {
+                getPersos(string: pageSuivante)
+            }
+            
+        }
+    }
 }
