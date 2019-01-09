@@ -13,6 +13,11 @@ class CharactersController: UIViewController {
     var pageSuivante = ""
     var personnages: [Personnage] = []
     
+    // pour l'animation
+    var cellImageFrame = CGRect() // si on met rien c'est 0 0 0 0
+    var detailImageFrame = CGRect()
+    var imageDeTransition = UIImageView()
+    
     
     @IBOutlet weak var detailView: DetailView!
     
@@ -33,14 +38,43 @@ class CharactersController: UIViewController {
     }
     
     func animateIn(personnage : Personnage){
+        // animation
+        detailImageFrame = detailView.persoIV.convert(detailView.persoIV.bounds, to: view)
+        
         detailView.setup(personnage)
+        
+        // animation
+        imageDeTransition = UIImageView(frame: cellImageFrame)
+        imageDeTransition.download(personnage.image)
+        imageDeTransition.layer.cornerRadius = 25
+        imageDeTransition.contentMode = .scaleAspectFill
+        imageDeTransition.clipsToBounds = true
+        view.addSubview(imageDeTransition)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.imageDeTransition.frame = self.detailImageFrame
+            self.imageDeTransition.layer.cornerRadius = self.detailImageFrame.height / 2
+            self.collectionView.alpha = 0
+        }) { (success) in
+            self.detailView.alpha = 1
+        }
+        
         collectionView.alpha = 0
         detailView.alpha = 1
     }
     
     @objc func animateOut(){
-        collectionView.alpha = 1
-        detailView.alpha = 0
+        UIView.animate(withDuration: 0.5, animations: {
+            self.imageDeTransition.frame = self.cellImageFrame
+            self.imageDeTransition.layer.cornerRadius = 25
+            self.collectionView.alpha = 1
+            self.detailView.alpha = 0
+        }) { (success) in
+            self.imageDeTransition.removeFromSuperview()
+        }
+        
+        
+    
+        
     }
 
     func getPersos(string : String) {
@@ -112,6 +146,13 @@ extension CharactersController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // avant tout on verifie que le layout correspond a celui de ma cell
+        guard let layout = collectionView.layoutAttributesForItem(at: indexPath) else {return}
+        let frame = collectionView.convert(layout.frame, to: collectionView.superview)
+        cellImageFrame = CGRect(x: frame.minX, y: frame.minY + 50, width: frame.width, height: frame.height - 50)
+        // les 50 a cause du label qui vaut 50
+        
         let personnage = personnages[indexPath.item]
         animateIn(personnage: personnage)
         
