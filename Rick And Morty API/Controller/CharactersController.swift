@@ -8,15 +8,28 @@
 
 import UIKit
 
+// pour le segmented control
+enum TypeQuery {
+    case all
+    case query
+}
+
 class CharactersController: UIViewController {
     
     var pageSuivante = ""
     var personnages: [Personnage] = []
     
+    // pour notre filtre query
+    var pageSuivanteQuery = ""
+    var personnagesQuery: [Personnage] = []
+    
     // pour l'animation
     var cellImageFrame = CGRect() // si on met rien c'est 0 0 0 0
     var detailImageFrame = CGRect()
     var imageDeTransition = UIImageView()
+    
+    
+    @IBOutlet weak var segmented: UISegmentedControl!
     
     
     @IBOutlet weak var detailView: DetailView!
@@ -32,9 +45,18 @@ class CharactersController: UIViewController {
         collectionView.dataSource = self
         
         // GET sur les personnages
-        getPersos(string: APIHelper().urlPersonnages)
+        getPersos(string: APIHelper().urlPersonnages, type: .all)
         detailView.alpha = 0 // caché des le debut
         NotificationCenter.default.addObserver(self, selector: #selector(animateOut), name: Notification.Name("close"), object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        pageSuivanteQuery = ""
+        personnagesQuery = []
+        getPersos(string: APIHelper().urlAvecParam(), type: .query  )
+        
+        
     }
     
     func animateIn(personnage : Personnage){
@@ -50,6 +72,7 @@ class CharactersController: UIViewController {
         imageDeTransition.contentMode = .scaleAspectFill
         imageDeTransition.clipsToBounds = true
         view.addSubview(imageDeTransition)
+        
         UIView.animate(withDuration: 0.5, animations: {
             self.imageDeTransition.frame = self.detailImageFrame
             self.imageDeTransition.layer.cornerRadius = self.detailImageFrame.height / 2
@@ -57,9 +80,6 @@ class CharactersController: UIViewController {
         }) { (success) in
             self.detailView.alpha = 1
         }
-        
-        collectionView.alpha = 0
-        detailView.alpha = 1
     }
     
     @objc func animateOut(){
@@ -77,16 +97,24 @@ class CharactersController: UIViewController {
         
     }
 
-    func getPersos(string : String) {
+    func getPersos(string : String, type: TypeQuery) {
         APIHelper().getPersos(string) { (pageSuivante, listePersos, erreurString) in
             if pageSuivante != nil {
                 print(pageSuivante!)
-                self.pageSuivante = pageSuivante!
+                
+                switch type {
+                case .all: self.pageSuivante = pageSuivante!
+                case .query: self.pageSuivanteQuery = pageSuivante!
+                }
             }
             
             if listePersos != nil {
-                self.personnages.append(contentsOf: listePersos!)
-                print(self.personnages.count)
+                
+                switch type {
+                case .all: self.personnages.append(contentsOf: listePersos!)
+                case .query: self.personnagesQuery.append(contentsOf: listePersos!)
+                }
+                
                 // dans les tableView on avait besoin de faire un reloadData
                 // ici on peut retourner dans la queue principale pour reload
                 DispatchQueue.main.async {
@@ -96,23 +124,36 @@ class CharactersController: UIViewController {
             }
             
             if erreurString != nil {
-                
+                print(erreurString!)
             }
         }
     }
+    
+    @IBAction func segmentedValueChanged(_ sender: UISegmentedControl) {
+        collectionView.reloadData() // on reload selon si on a demandé all ou query
+    }
+    
+    
 }
 
 
 extension CharactersController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return personnages.count
+        if segmented.selectedSegmentIndex == 0 {
+            return personnages.count
+        }
+        return personnagesQuery.count
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let personnage = personnages[indexPath.item]
+        
+        let personnage = segmented.selectedSegmentIndex == 0 ? personnages[indexPath.item] : personnagesQuery[indexPath.item]
+        
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersoCell", for: indexPath) as? PersoCell {
-            cell.setupCell(perso: personnage)
+            cell.setupCell(personnage)
             return cell
         }
         return UICollectionViewCell()
@@ -132,14 +173,20 @@ extension CharactersController: UICollectionViewDelegate, UICollectionViewDataSo
     
     // pour determiner si on est en bas de notre page (pour afficher la suite)
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.item  == personnages.count - 1 {
+        
+        let count = segmented.selectedSegmentIndex == 0 ? personnages.count : personnagesQuery.count
+        if indexPath.item  ==  count - 1 {
             // si on est au dernier personnage
             // on va telecharger
             
             // on verifie dabord si la pageSuivante existe
              print("Telecharger")
-            if pageSuivante != "" {
-                getPersos(string: pageSuivante)
+            
+            if segmented.selectedSegmentIndex == 0 && pageSuivante != "" {
+                getPersos(string: pageSuivante, type: .all)
+            }
+            if segmented.selectedSegmentIndex == 1 && pageSuivante != "" {
+                getPersos(string: pageSuivanteQuery, type: .query)
             }
             
         }
@@ -153,8 +200,15 @@ extension CharactersController: UICollectionViewDelegate, UICollectionViewDataSo
         cellImageFrame = CGRect(x: frame.minX, y: frame.minY + 50, width: frame.width, height: frame.height - 50)
         // les 50 a cause du label qui vaut 50
         
-        let personnage = personnages[indexPath.item]
-        animateIn(personnage: personnage)
+        
+        switch segmented.selectedSegmentIndex {
+        case 0: animateIn(personnage: personnages[indexPath.item])
+        case 1: animateIn(personnage: personnagesQuery[indexPath.item])
+        default:
+            break
+        }
+        
+        
         
     }
 }

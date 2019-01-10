@@ -16,9 +16,10 @@ class PersoCell: UICollectionViewCell {
     
     var perso : Personnage!
     
-    func setupCell(perso : Personnage) {
+    func setupCell(_ perso : Personnage) {
         self.perso = perso
         self.nameLbl.text = self.perso.name
+        
         // pour l'image on créé une extension (dans modele)
         self.persoIV.download(self.perso.image)
         holderView.layer.cornerRadius = 25 // arrondi des angles

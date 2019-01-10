@@ -18,12 +18,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7c3-jo-hJa">
+                                <rect key="frame" x="30" y="79" width="315" height="28"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27" id="jEB-MV-yMM"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Tous"/>
+                                    <segment title="Filtrés"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="segmentedValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="PSr-6d-l6y"/>
+                                </connections>
+                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6a-b2-UwA" customClass="DetailView" customModule="Rick_And_Morty_API" customModuleProvider="target">
                                 <rect key="frame" x="20" y="84" width="335" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s74-V6-l3P">
-                                <rect key="frame" x="10" y="74" width="355" height="593"/>
+                                <rect key="frame" x="10" y="121" width="355" height="546"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Bd-i0-end">
                                     <size key="itemSize" width="162" height="159"/>
@@ -88,8 +103,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W6a-b2-UwA" secondAttribute="bottom" constant="20" id="0ed-VN-NVc"/>
                             <constraint firstItem="W6a-b2-UwA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8Yq-hv-yZ1"/>
                             <constraint firstItem="W6a-b2-UwA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="8c3-zK-Lyc"/>
-                            <constraint firstItem="s74-V6-l3P" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Cgl-HK-iWR"/>
+                            <constraint firstItem="7c3-jo-hJa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="9hD-gJ-SWV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s74-V6-l3P" secondAttribute="trailing" constant="10" id="J7b-MX-ovV"/>
+                            <constraint firstItem="7c3-jo-hJa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="MeS-y1-AO8"/>
+                            <constraint firstItem="s74-V6-l3P" firstAttribute="top" secondItem="7c3-jo-hJa" secondAttribute="bottom" constant="15" id="TXP-me-FAC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7c3-jo-hJa" secondAttribute="trailing" constant="30" id="cKb-kS-dps"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W6a-b2-UwA" secondAttribute="trailing" constant="20" id="p5U-7A-aDa"/>
                             <constraint firstAttribute="bottom" secondItem="s74-V6-l3P" secondAttribute="bottom" id="v6t-2R-vVy"/>
                             <constraint firstItem="s74-V6-l3P" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="w34-5i-PBH"/>
@@ -106,6 +124,7 @@
                     <connections>
                         <outlet property="collectionView" destination="s74-V6-l3P" id="KVT-VG-mkB"/>
                         <outlet property="detailView" destination="W6a-b2-UwA" id="NHZ-uF-ul0"/>
+                        <outlet property="segmented" destination="7c3-jo-hJa" id="6cI-MT-tLh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

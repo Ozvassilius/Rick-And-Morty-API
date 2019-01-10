@@ -25,6 +25,17 @@ class APIHelper {
         return _baseUrl + "character/"
     }
     
+    func urlAvecParam() -> String {
+        var base = urlPersonnages + "?"
+        if UserDefaultsHelper().getName() != "" {
+            base += "name=" + UserDefaultsHelper().getName() + "&"
+        }
+        let st = UserDefaultsHelper().getStatus() ? "alive" : "dead"
+        base += "status=" + st
+        return base
+        
+    }
+    
     func getPersos(_ string: String, completion: ApiCompletion?){
         // on crée une constante url qui recupere le parametre de type String de la fonction
         // dans ce cas qui correspond a l'url de l'ap pour avoir les personnages
