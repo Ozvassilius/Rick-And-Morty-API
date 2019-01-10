@@ -112,16 +112,67 @@
             </objects>
             <point key="canvasLocation" x="1076" y="133.5832083958021"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Controller-->
         <scene sceneID="39q-va-A56">
             <objects>
-                <viewController id="R1E-iB-sq0" sceneMemberID="viewController">
+                <viewController id="R1E-iB-sq0" customClass="SettingsController" customModule="Rick_And_Morty_API" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G5F-OF-jg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entrez un nom" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Np-Vi-QP6">
+                                <rect key="frame" x="16" y="84" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="oPo-mn-Mr9"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuM-Dc-roe">
+                                <rect key="frame" x="20" y="144" width="265" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Zd8-re-M0A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eam-cN-n9H">
+                                <rect key="frame" x="305" y="144" width="52" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="VGL-UR-a1o"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="switchChanged:" destination="R1E-iB-sq0" eventType="valueChanged" id="5gO-Sk-Yyd"/>
+                                </connections>
+                            </switch>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7Np-Vi-QP6" firstAttribute="top" secondItem="MMh-PP-fLH" secondAttribute="top" constant="20" id="6eR-Oi-nfk"/>
+                            <constraint firstItem="wuM-Dc-roe" firstAttribute="top" secondItem="7Np-Vi-QP6" secondAttribute="bottom" constant="30" id="7bf-5I-YPs"/>
+                            <constraint firstItem="7Np-Vi-QP6" firstAttribute="leading" secondItem="MMh-PP-fLH" secondAttribute="leading" constant="16" id="LbQ-qs-u87"/>
+                            <constraint firstItem="Eam-cN-n9H" firstAttribute="leading" secondItem="wuM-Dc-roe" secondAttribute="trailing" constant="20" id="a76-W8-UL3"/>
+                            <constraint firstItem="Eam-cN-n9H" firstAttribute="top" secondItem="7Np-Vi-QP6" secondAttribute="bottom" constant="30" id="fN1-6r-Loi"/>
+                            <constraint firstItem="MMh-PP-fLH" firstAttribute="trailing" secondItem="7Np-Vi-QP6" secondAttribute="trailing" constant="16" id="kjs-lG-qWe"/>
+                            <constraint firstItem="MMh-PP-fLH" firstAttribute="trailing" secondItem="Eam-cN-n9H" secondAttribute="trailing" constant="20" id="klU-e5-ng3"/>
+                            <constraint firstItem="wuM-Dc-roe" firstAttribute="leading" secondItem="MMh-PP-fLH" secondAttribute="leading" constant="20" id="zji-zD-biA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MMh-PP-fLH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="dah-OP-kwt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Eur-k1-6bm">
+                            <connections>
+                                <action selector="saveAction:" destination="R1E-iB-sq0" id="LnQ-9A-RRg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="nameTF" destination="7Np-Vi-QP6" id="afv-aV-ieP"/>
+                        <outlet property="statusLbl" destination="wuM-Dc-roe" id="84A-1z-q2f"/>
+                        <outlet property="statusSwitch" destination="Eam-cN-n9H" id="ZZt-eO-Ggj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9p1-rn-bBK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

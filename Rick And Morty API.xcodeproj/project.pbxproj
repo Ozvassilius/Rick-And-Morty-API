@@ -19,6 +19,8 @@
 		43C47FAC21E6466200ACD64E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FAB21E6466200ACD64E /* Extensions.swift */; };
 		43C47FAE21E658B000ACD64E /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FAD21E658B000ACD64E /* DetailView.swift */; };
 		43C47FB021E658D200ACD64E /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C47FAF21E658D200ACD64E /* DetailView.xib */; };
+		43C47FB221E6CFA700ACD64E /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FB121E6CFA700ACD64E /* SettingsController.swift */; };
+		43C47FB621E6D35000ACD64E /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C47FB521E6D35000ACD64E /* UserDefaultsHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +38,8 @@
 		43C47FAB21E6466200ACD64E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		43C47FAD21E658B000ACD64E /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		43C47FAF21E658D200ACD64E /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
+		43C47FB121E6CFA700ACD64E /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		43C47FB521E6D35000ACD64E /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 			children = (
 				43C47FA321E617E600ACD64E /* NavController.swift */,
 				43C47F9021E615FF00ACD64E /* CharactersController.swift */,
+				43C47FB121E6CFA700ACD64E /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -95,6 +100,7 @@
 				43C47FA521E624DF00ACD64E /* APIHelper.swift */,
 				43C47FA721E62E7800ACD64E /* APIResult.swift */,
 				43C47FAB21E6466200ACD64E /* Extensions.swift */,
+				43C47FB521E6D35000ACD64E /* UserDefaultsHelper.swift */,
 			);
 			path = Modele;
 			sourceTree = "<group>";
@@ -181,6 +187,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C47FB621E6D35000ACD64E /* UserDefaultsHelper.swift in Sources */,
+				43C47FB221E6CFA700ACD64E /* SettingsController.swift in Sources */,
 				43C47FA621E624DF00ACD64E /* APIHelper.swift in Sources */,
 				43C47FAE21E658B000ACD64E /* DetailView.swift in Sources */,
 				43C47FA821E62E7800ACD64E /* APIResult.swift in Sources */,
