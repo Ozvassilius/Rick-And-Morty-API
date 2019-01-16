@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7c3-jo-hJa">
-                                <rect key="frame" x="30" y="79" width="315" height="28"/>
+                                <rect key="frame" x="30" y="94" width="315" height="28"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="jEB-MV-yMM"/>
@@ -38,7 +38,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s74-V6-l3P">
-                                <rect key="frame" x="10" y="121" width="355" height="546"/>
+                                <rect key="frame" x="10" y="136" width="355" height="531"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Bd-i0-end">
                                     <size key="itemSize" width="162" height="159"/>
@@ -103,7 +103,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="W6a-b2-UwA" secondAttribute="bottom" constant="20" id="0ed-VN-NVc"/>
                             <constraint firstItem="W6a-b2-UwA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="8Yq-hv-yZ1"/>
                             <constraint firstItem="W6a-b2-UwA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="8c3-zK-Lyc"/>
-                            <constraint firstItem="7c3-jo-hJa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="9hD-gJ-SWV"/>
+                            <constraint firstItem="7c3-jo-hJa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="9hD-gJ-SWV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s74-V6-l3P" secondAttribute="trailing" constant="10" id="J7b-MX-ovV"/>
                             <constraint firstItem="7c3-jo-hJa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="MeS-y1-AO8"/>
                             <constraint firstItem="s74-V6-l3P" firstAttribute="top" secondItem="7c3-jo-hJa" secondAttribute="bottom" constant="15" id="TXP-me-FAC"/>

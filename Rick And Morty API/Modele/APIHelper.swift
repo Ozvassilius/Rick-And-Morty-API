@@ -12,31 +12,30 @@ import Foundation
 // d'etre utilisé comme completion, parametre asynchrone
 // qui resoud le probleme de lapse de temps de reponse de notre requete
 typealias ApiCompletion = (
-    _ next : String?, // page suivant
-    _ personnages : [Personnage]?,
-    _ errorString : String?
+    _ next: String?, // page suivant
+    _ personnages: [Personnage]?,
+    _ errorString: String?
 ) -> Void
 
 class APIHelper {
-   
+
     private let _baseUrl = "https://rickandmortyapi.com/api/"
-   
-    var urlPersonnages : String {
+
+    var urlPersonnages: String {
         return _baseUrl + "character/"
     }
-    
+
     func urlAvecParam() -> String {
         var base = urlPersonnages + "?"
         if UserDefaultsHelper().getName() != "" {
             base += "name=" + UserDefaultsHelper().getName() + "&"
         }
-        let st = UserDefaultsHelper().getStatus() ? "alive" : "dead"
-        base += "status=" + st
+        let str = UserDefaultsHelper().getStatus() ? "alive" : "dead"
+        base += "status=" + str
         return base
-        
     }
-    
-    func getPersos(_ string: String, completion: ApiCompletion?){
+
+    func getPersos(_ string: String, completion: ApiCompletion?) {
         // on crée une constante url qui recupere le parametre de type String de la fonction
         // dans ce cas qui correspond a l'url de l'ap pour avoir les personnages
         // si on a cette url on debut notre logique:
@@ -44,7 +43,7 @@ class APIHelper {
             URLSession.shared.dataTask(with: url) { (data, response, error) in
                 if error != nil {
                     // print(error!.localizedDescription) } remplacé par
-                    completion?(nil,nil,error!.localizedDescription)
+                    completion?(nil, nil, error!.localizedDescription)
                 }
                 if data != nil {
                     // convertir notre data en JSON
@@ -57,16 +56,15 @@ class APIHelper {
                             print("je m'appelle \(perso.name) et je suis un \(perso.species) !")
                         }
                     } catch {
-                        completion?(nil,nil,error.localizedDescription)
+                        completion?(nil, nil, error.localizedDescription)
                     }
                 } else {
-                    completion?(nil,nil,"aucune data dispo")
+                    completion?(nil, nil, "aucune data dispo")
                     }
                 }.resume()
-           
         } else {
             // si on a pas d'url
-             completion?(nil,nil,"URL invalide")
+             completion?(nil, nil, "URL invalide")
         }
     }
 }

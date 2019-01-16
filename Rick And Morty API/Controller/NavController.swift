@@ -20,10 +20,5 @@ class NavController: UINavigationController {
         imageView.frame = CGRect(x: 0, y: 0, width: navigationBar.frame.width/2, height: navigationBar.frame.height)
         imageView.center.x = navigationBar.center.x
         navigationBar.addSubview(imageView)
-        
     }
-    
-
-    
-
 }
